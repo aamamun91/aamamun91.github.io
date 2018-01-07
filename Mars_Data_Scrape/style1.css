@@ -1,0 +1,30 @@
+
+
+.navbar li {
+	display:inline-block;
+	float:right;
+}
+
+@media(min-width: 480px) {
+.siderbar {
+	float:center;
+}
+
+
+.main {
+	float:center;
+}
+
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #33D1FF;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+p {
+    border: none;
+    padding: 10px;
+}
