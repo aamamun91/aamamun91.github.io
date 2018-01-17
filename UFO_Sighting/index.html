@@ -1,0 +1,94 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	  <title>UFO Sighting</title>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="text" class="form-control" id="date" placeholder="date">								
+				</div>				
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="text" class="form-control" id="city" placeholder="city">									
+				</div>				
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="text" class="form-control" id="state" placeholder="state">								
+				</div>				
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="text" class="form-control" id="country" placeholder="country">								
+				</div>				
+			</div>
+
+			<div class="col-md-2">
+				<div class="form-group">
+					<input type="text" class="form-control" id="shape" placeholder="shape">								
+				</div>				
+			</div>
+
+			  <div class="col-md-2">
+			  	<div class="form-group">
+			  		<a id="search" class="btn btn-default" color = "blue">Search</a>
+			  	</div>
+			  </div>	
+
+			  <!-- <div class="row">
+			  	<div class="col-md-8 col-md-offset-3 text-right">
+			  		<button id="loadsearch-btn" class="btn btn-primary">Load More Results</button>
+			  	</div>
+			  </div> -->
+
+		</div>
+		
+
+		<div class="row">
+			<div class="col-md-10">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>datetime</th>
+							<th>city</th>
+							<th>state</th>
+							<th>country</th>
+							<th>shape</th>
+							<th>duration</th>
+							<th>comment</th>
+						</tr>						
+					</thead>
+					<tbody></tbody>					
+				</table>				
+			</div>			
+		</div>
+
+		<div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <button id="load-btn" class="btn btn-primary">Load More UFO</button>
+      </div>
+    </div>
+
+	</div>
+
+	<script src="Data/data.js" type="text/javascript"></script>
+	<script src="index.js" type="text/javascript"></script>
+</body>
+
+</html>
