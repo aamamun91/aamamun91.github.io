@@ -1,107 +1,106 @@
-
+<!DOCTYPE html>
 
 <html lang="en"><head>
-	<meta charset="UTC-8">
-	<title>Weather Data Visualization Dashboard</title>
-	<!-- Linking Bootstrap stylesheet-->
-	<!-- Latest compiled and minified CSS -->
+  <meta charset="UTC-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <title>Weather Data Visualization Dashboard</title>
+  <!-- Linking Bootstrap stylesheet-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" media="screen">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="style.css">
+    <!-- Our own CSS stylesheet -->
+    <link rel="stylesheet" href="../assets/css/styles.css" media="screen">
 </head>
+
 <body>
-<nav class="navbar navbar-default">
-  	<div class="container-fluid"> 
-    	<div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html" style="font-size: 175%">Latitude</a>      
-    </div>
+    <!-- Start of navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-     <ul class="nav navbar-nav navbar-right">
-        <li><a href="data.html">Data</a></li>
-        <li><a href="comparison.html">Comparison</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="max_temperature.html">Max Temperature</a></li>
-            <li><a href="humidity.html">Humidity</a></li>
-            <li><a href="cloudiness.html">Cloudiness</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="wind_speed.html">Wind Speed</a></li>
-          </ul>
-        </li>
-      </ul>
-    	</div>
-  		</div>
-	</nav>
-
-<div class="container">
-    <div class="row" align="left">
-       <div class="col-md-6" align="left">
-        <div class="col-md-12 text-center">
-          <h1 style="font-family:verdana;font-size:200%;color: #33D1FF;font-weight: bold">Maximum Temperature</h1>
-          <br>
-        </div>        
-        <img src="Images/temperatureVsLat.png" width="575px" height="450px">
-        <br>
-        <p>This is about temperature</p>
-      </div>    
-
-      <br>
-      <br>
-
-     <div class="col-md-6 sidebar" align="center">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="row">
-          <div class="col-md-10">
-            <h1 style="font-family:verdana;font-size:200%;color: #33D1FF;font-weight: bold;">Visualizations</h1>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-9 phone-nav">
+              <a class="navbar-brand" href="../index.html" id="logo">Lattitude</a>
+            </div>
           </div>
-        </div>    
 
-        <br>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                 <li><a href="max_temperature.html">Max Temperature</a></li>
+                  <li><a href="humidity.html">Humidity</a></li>
+                  <li><a href="cloudiness.html">Cloudiness</a></li>
+                  <li><a href="wind_speed.html">Wind Speed</a></li>
+                </ul>
+              </li>
+              <li><a href="comparison.html">Comparison</a></li>
+              <li><a href="data.html">Data</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- End of navbar -->
 
+    <!-- Start of container -->
+    <div class="container">
+      <section class="row">
+        <div class="col-md-8">
+          <article class="description-content">
+            <h1 class="description-header">Max Temperature</h1>
+            <hr class="description-hr"/>
+            <img src="Images/temperatureVsLat.png" alt="" class="img-responsive"/>
+            <p>As expected, the weather becomes significantly warmer as one approaches the equator (0 Deg. Latitude). More interestingly, however, is the fact that the southern hemisphere tends to be warmer this time of year than the northern hemisphere. This may be due to the tilt of the earth at the time of the year this data was gathered.</p>
+          </article>
+        </div>
+        <div class="col-md-4">
 
-       <div class="row" align="center">
+          <!-- Start of Visualizations imageNav Area -->
+          <section id="imageNav-area">
+            <div class="imageNav-content">
+              <h2 class="imageNav-header">Visualizations</h2>
+              <hr />
+              <div id="images">
+                <a href="max_temperature.html"><img src="Images/temperatureVsLat.png" alt="Latitude vs. Max Temperature" class="imageNav-photo active"></a>
+                <a href="humidity.html"><img src="Images/humidityVsLat.png" alt="Latitude vs. Humidity" class="imageNav-photo"></a>
+                <a href="cloudiness.html"><img src="Images/cloudinessVsLat.png" alt="Latitude vs. Cloudiness" class="imageNav-photo"></a>
+                <a href="wind_speed.html"><img src="Images/windSpeedVsLat.png" alt="Latitude vs. Wind Speed" class="imageNav-photo"></a>
+              </div>
+            </div>
+          </section>
+          <!-- End of the Visualizations imageNav Area -->
 
-          <div class="col-md-4" align="center">    
-             <img src="Images/temperatureVsLat.png" width="150px" height="150px">
-          </div>
-          
-        
-          <div class="col-md-4" align="center">  
-             <img src="Images/humidityVsLat.png" width="150px" height="150px">
-          </div>
-          
-       </div>   
-       <div class="row"> 
-          
-          <div class="col-md-4" align="center">  
-            <img src="Images/cloudinessVsLat.png" width="150px" height="150px">
-          </div>          
-          
-          <div class="col-md-4" align="center">     
-            <img src="Images/windSpeedVsLat.png" width="150px" height="150px">
-          </div>
-          
-        </div>    
-     </div>         
-    
-  </div>      
-</div> 	
-	
-</body></html>
+        </div>
+      </section>
+    </div>
+    <!-- End of container -->
+
+    <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="two-toned-footer-color"></div>
+      <p class="text-muted text-muted-footer text-center">
+        &copy; Copyright Coding Bootcamp 2017
+      </p>
+    </footer>
+    <!-- End of footer -->
+
+    <!-- jQuery CDN -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+
+  </html>
