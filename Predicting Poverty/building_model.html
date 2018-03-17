@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTC-8">
+    <title>Predicting Poverty- Machine Learning Approach</title>
+    <!-- Linking Bootstrap stylesheet-->
+    <!-- Latest compiled and minified CSS -->
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ 		crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="	sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="	sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>	
+  <nav class="navbar navbar-default">
+    <div class="container-fluid"> 
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 160%; color: white">Predicting Poverty</a>
+    </div>
+
+    <Collect the nav links, forms, and other content for toggling>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">        
+        <li><a href="problem_description.html" style="color: white">Problem Description</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">Models and Python Code<span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+             <li><a href="building_model.html">Competing Models</a></li>
+            <li><a href="model_evaluation.html">Model Evaluation</a></li>
+            <li><a href="code.html">Python Code</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li> 
+                   
+        <li><a href="prediction_performance.html" style="color: white">Prediction Performance</a></li>
+        <li><a href="income_poverty.html" style="color: white">Poverty and Income Growth</a></li>
+
+        </ul>
+
+      </div>
+      </div>
+  </nav>
+
+	<div class="container">
+
+    <div class="row">
+      
+   <div class="col-md-8">
+          <article class="finalproject-content">
+
+            <p>A total of seven models were fitted </p>
+
+            <br>
+            <h5 style="color: #E74C3C"><b>Logistic Regression</b></h5>
+            <hr>
+
+            <p>Logistic regression is a linear model for classification rather than regression. Logistic regression is also known in the literature as logit regression, maximum-entropy classification (MaxEnt) or the log-linear classifier. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function.  </p>
+
+            <br>
+
+            <p>The implementation of logistic regression in scikit-learn can be accessed from class LogisticRegression. This implementation can fit binary, One-vs- Rest, or multinomial logistic regression with optional L2 or L1 regularization.</p>
+
+            <br>
+
+            <p>As an optimization problem, binary class L2 penalized logistic regression minimizes the following cost function: </p>
+
+            <!--a><img src="photo/eq1.jpg" alt="flickr" class="imageNav-photo" style="width:400px;height:240px;"></a>  
+
+            <br>  
+ 
+            <p>Similarly, L1 regularized logistic regression solves the following optimization problem</p>
+
+            <a><img src="photo/eq2.png" alt="flickr" class="imageNav-photo" style="width:400px;height:240px;"></a-->
+            <br>
+            <h5 style="color: #E74C3C"><b>Random Forest</b></h5>
+            <hr>
+
+              <p>Random Forest is a trademark term for an ensemble of decision trees. In Random Forest, we’ve collection of decision trees (so known as “Forest”). To classify a new object based on attributes, each tree gives a classification and we say the tree “votes” for that class. The forest chooses the classification having the most votes (over all the trees in the forest).</p>
+
+            <p>Each tree is planted &amp; grown as follows:</p>
+
+            <p>1.  If the number of cases in the training set is N, then sample of N cases is taken at random but with replacement. This sample will be the training set for growing the tree.</p>
+            <p>2.  If there are M input variables, a number m<<<code>M</code> is specified such that at each node, m variables are selected at random out of the M and the best split on these m is used to split the node. The value of m is held constant during the forest growing.</p>
+             <p>3.  Each tree is grown to the largest extent possible. There is no pruning.</p>
+
+            <br>
+
+            <h5 style="color: #E74C3C"><b>XGBoost</b></h5>
+            <hr>
+
+            <p>Another classic gradient boosting algorithm that’s known to be the decisive choice between winning and losing in some Kaggle competitions.</p>
+
+            <p>The XGBoost has an immensely high predictive power which makes it the best choice for accuracy in events as it possesses both linear model and the tree learning algorithm, making the algorithm almost 10x faster than existing gradient booster techniques.</p>
+
+            <p>The support includes various objective functions, including regression, classification and ranking.</p>
+            <p>One of the most interesting things about the XGBoost is that it is also called a regularized boosting technique. This helps to reduce overfit modelling and has a massive support for a range of languages such as Scala, Java, R, Python, Julia and C++.</p>
+
+            <p>Supports distributed and widespread training on many machines that encompass GCE, AWS, Azure and Yarn clusters. XGBoost can also be integrated with Spark, Flink and other cloud dataflow systems with a built in cross validation at each iteration of the boosting process.</p>
+
+            <br>
+           
+
+            <h5 style="color: #E74C3C"><b>K-Nearest Neighbor</b></h5>
+            <hr>
+            <p>It can be used for both classification and regression problems. However, it is more widely used in classification problems in the industry. K nearest neighbors is a simple algorithm that stores all available cases and classifies new cases by a majority vote of its k neighbors. The case being assigned to the class is most common amongst its K nearest neighbors measured by a distance function.</p>
+
+            <p>These distance functions can be Euclidean, Manhattan, Minkowski and Hamming distance. First three functions are used for continuous function and fourth one (Hamming) for categorical variables. If K = 1, then the case is simply assigned to the class of its nearest neighbor. At times, choosing K turns out to be a challenge while performing kNN modeling.</p>
+
+            <br>  
+    
+            <h5 style="color: #E74C3C"><b>Naïve Bayes</b></h5>
+            <hr>
+            <p>It is a classification technique based on Bayes’ theorem with an assumption of independence between predictors. In simple terms, a Naive Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature. For example, a fruit may be considered to be an apple if it is red, round, and about 3 inches in diameter. Even if these features depend on each other or upon the existence of the other features, a naive Bayes classifier would consider all of these properties to independently contribute to the probability that this fruit is an apple.</p>
+
+            <p>Naive Bayesian model is easy to build and particularly useful for very large data sets. Along with simplicity, Naive Bayes is known to outperform even highly sophisticated classification methods.</p>
+
+            <br>
+            
+            <h5 style="color: #E74C3C"><b>Support Vector Machines</b></h5> 
+            <hr>
+
+            <p>It is a classification method. If we only had two features like Height and Hair length of an individual, we’d first plot these two variables in two dimensional space where each point has two co-ordinates (these co-ordinates are known as Support Vectors)</p>
+
+            <p>The advantages of support vector machines are:</p>
+            <p>• Effective in high dimensional spaces.</p>
+            <p>• Still effective in cases where number of dimensions is greater than the number of samples.</p>
+            <p>• Uses a subset of training points in the decision function (called support vectors), so it is also memory efficient.</p>
+            <p>• Versatile: different Kernel functions can be specified for the decision function. Common kernels are provided, but it is also possible to specify custom kernels.</p>
+
+            <p>The disadvantages of support vector machines include:</p>
+            <p>• If the number of features is much greater than the number of samples, avoid over-fitting in choosing Kernel functions and regularization term is crucial.</p>
+            <p>• SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation (see Scores and probabilities, below).</p>
+
+            <br>
+
+            <h5 style="color: #E74C3C"><b>Decision Trees</b></h5>
+            <hr>
+            <p>Decision Trees (DTs) are a non-parametric supervised learning method used for classification and regression. The goal is to create a model that predicts the value of a target variable by learning simple decision rules inferred from the data features.</p>
+
+            <p>Some advantages of decision trees are:</p>
+
+            <p>• Simple to understand and to interpret. Trees can be visualized.</p>
+            <p>• Requires little data preparation. Other techniques often require data normalization, dummy variables need to be created and blank values to be removed. Note however that this module does not support missing values.</p>
+            <p>• The cost of using the tree (i.e., predicting data) is logarithmic in the number of data points used to train the tree.</p>
+            <p>• Able to handle both numerical and categorical data. Other techniques are usually specialized in analyzing datasets that have only one type of variable. See algorithms for more information.</p>
+            <p>• Able to handle multi-output problems.</p>
+            <p>• Uses a white box model. If a given situation is observable in a model, the explanation for the condition is easily explained by Boolean logic. By contrast, in a black box model (e.g., in an artificial neural network), results may be more difficult to interpret.</p>
+            <p>• Possible to validate a model using statistical tests. That makes it possible to account for the reliability of the model.</p>
+            <p>• Performs well even if its assumptions are somewhat violated by the true model from which the data were generated.</p>
+
+            <p>The disadvantages of decision trees include:</p>
+            <p>• Decision-tree learners can create over-complex trees that do not generalize the data well. This is called overfitting. Mechanisms such as pruning (not currently supported), setting the minimum number of samples required at a leaf node or setting the maximum depth of the tree are necessary to avoid this problem.</p>
+            <p>• Decision trees can be unstable because small variations in the data might result in a completely different tree being generated. This problem is mitigated by using decision trees within an ensemble.</p>
+            <p>• The problem of learning an optimal decision tree is known to be NP-complete under several aspects of optimality and even for simple concepts. Consequently, practical decision-tree learning algorithms are based on heuristic algorithms such as the greedy algorithm where locally optimal decisions are made at each node. Such algorithms cannot guarantee to return the globally optimal decision tree. This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement.</p>
+            <p>• There are concepts that are hard to learn because decision trees do not express them easily, such as XOR, parity or multiplexer problems.</p>
+            <p>• Decision tree learners create biased trees if some classes dominate. It is therefore recommended to balance the dataset prior to fitting with the decision tree.</p>
+
+            <br>
+
+            <h5 style="color: #E74C3C"><b>Adaboost Classifier</b></h5>
+            <hr>
+
+            <p>The module sklearn.ensemble includes the popular boosting algorithm AdaBoost, introduced in 1995 by Freund and Schapire [FS1995].
+            The core principle of AdaBoost is to fit a sequence of weak learners (i.e., models that are only slightly better than random guessing, such as small decision trees) on repeatedly modified versions of the data. The predictions from all of them are then combined through a weighted majority vote (or sum) to produce the final prediction. The data modifications at each so-called boosting iteration consist of applying weights  ,  , …,   to each of the training samples. Initially, those weights are all set to  , so that the first step simply trains a weak learner on the original data. For each successive iteration, the sample weights are individually modified and the learning algorithm is reapplied to the reweighted data. At a given step, those training examples that were incorrectly predicted by the boosted model induced at the previous step have their weights increased, whereas the weights are decreased for those that were predicted correctly. As iterations proceed, examples that are difficult to predict receive ever-increasing influence. Each subsequent weak learner is thereby forced to concentrate on the examples that are missed by the previous ones in the sequence [HTF].</p>
+
+            <p>Hyper-parameters are parameters that are not directly learnt within estimators. In scikit-learn they are passed as arguments to the constructor of the estimator classes. Typical examples include C, kernel and gamma for Support Vector Classifier, alpha for Lasso, etc.</p>
+
+            <p>It is possible and recommended to search the hyper-parameter space for the best cross validation score.</p>
+
+            <p>A search consists of:</p>
+
+            <p>• an estimator (regressor or classifier such as sklearn.svm.SVC());</p>
+            <p>• a parameter space;</p>
+            <p>• a method for searching or sampling candidates;</p>
+            <p>• a cross-validation scheme; and</p>
+            <p>• a score function.</p>
+
+            <p>Some models allow for specialized, efficient parameter search strategies, outlined below. Two generic approaches to sampling search candidates are provided in scikit-learn: for given values, GridSearchCV exhaustively considers all parameter combinations, while RandomizedSearchCV can sample a given number of candidates from a parameter space with a specified distribution. After describing these tools we detail best practice applicable to both approaches.</p>
+
+            <p>Note that it is common that a small subset of those parameters can have a large impact on the predictive or computation performance of the model while others can be left to their default values. It is recommended to read the docstring of the estimator class to get a finer understanding of their expected behavior, possibly by reading the enclosed reference to the literature.</p>
+
+            <p>While using a grid of parameter settings is currently the most widely used method for parameter optimization, other search methods have more favourable properties. RandomizedSearchCV implements a randomized search over parameters, where each setting is sampled from a distribution over possible parameter values. This has two main benefits over an exhaustive search:</p>
+            <p>• A budget can be chosen independent of the number of parameters and possible values.</p>
+            <p>• Adding parameters that do not influence the performance does not decrease efficiency.</p>
+            <p>Specifying how parameters should be sampled is done using a dictionary, very similar to specifying parameters for GridSearchCV. Additionally, a computation budget, being the number of sampled candidates or sampling iterations, is specified using the n_iter parameter. For each parameter, either a distribution over possible values or a list of discrete choices (which will be sampled uniformly) can be specified:</p>     
+
+          </article>
+        </div>
+
+    </div>
+      
+
+
+</div>
+  <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+          <p class="text-muted text-muted-footer text-center">
+            &copy; Copyright Abdullah Al Mamun
+          </p>
+        </div>
+      </div>
+      </div>  
+    </footer>
+
+    <!-- End of footer -->
+
+</body>
+
+</html>

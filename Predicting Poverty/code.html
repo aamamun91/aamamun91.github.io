@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTC-8">
+    <title>Predicting Poverty- Machine Learning Approach</title>
+    <!-- Linking Bootstrap stylesheet-->
+    <!-- Latest compiled and minified CSS -->
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ 		crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="	sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="	sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>	
+  <nav class="navbar navbar-default">
+    <div class="container-fluid"> 
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 160%; color: white">Predicting Poverty</a>
+    </div>
+
+    <Collect the nav links, forms, and other content for toggling>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">        
+        <li><a href="problem_description.html" style="color: white">Problem Description</a></li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">Models and Python Code<span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+             <li><a href="building_model.html">Competing Models</a></li>
+            <li><a href="model_evaluation.html">Model Evaluation</a></li>
+            <li><a href="code.html">Python Code</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li> 
+                   
+        <li><a href="prediction_performance.html" style="color: white">Prediction Performance</a></li>
+        <li><a href="income_poverty.html" style="color: white">Poverty and Income Growth</a></li>
+
+        </ul>
+
+      </div>
+      </div>
+  </nav>
+
+	<div class="container">
+
+    <div class="row">
+      
+   <div class="col-md-10">
+          <article class="finalproject-content">
+            <h3 class="code-header">Python Code</h3>
+
+            <br>
+
+            <h4 class="code-header">Importing depency and load data</h4>
+            <hr/>           
+
+            <a><img src="photo/code1.png" alt="flickr" class="imageNav-photo"></a>
+
+            <p><code style="color: A93226">get_ipython</code>().magic('matplotlib inline')</p>
+
+            <p><code style="color: A93226">import</code> os</p>
+
+            <p><code style="color: A93226">import</code> numpy as np</p>
+            <p><code style="color: A93226">import</code> pandas as pd</p>
+
+            <p><code style="color: A93226">import</code> matplotlib.pyplot as plt</p>
+            <p><code style="color: A93226">from</code> sklearn import metrics</p>
+            <p><code style="color: A93226">from</code> sklearn import svm</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import accuracy_score </p> 
+            <p><code style="color: A93226">from</code> sklearn.preprocessing import StandardScaler</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import roc_auc_score</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import classification_report</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import log_loss</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import confusion_matrix</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import roc_curve</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import cohen_kappa_score </p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import cohen_kappa_score</p>
+
+
+            <p style="color: #E74C3C"> GETTING DATA READY</p> 
+            <p>DATA_DIR = os.path.join('C:', 'data\processed')</p>
+
+            <p style="color: #E74C3C"> CREATING DATA PATH</p> 
+            <p>data_paths = {'A': {'train': os.path.join(DATA_DIR, 'A', 'A_hhold_train.csv'),</p> 
+            <p>                    'test':  os.path.join(DATA_DIR, 'A', 'A_hhold_test.csv')},</p> 
+                          
+            <p>              'B': {'train': os.path.join(DATA_DIR, 'B', 'B_hhold_train.csv'),</p> 
+            <p>                   'test':  os.path.join(DATA_DIR, 'B', 'B_hhold_test.csv')},</p> 
+                          
+            <p>              'C': {'train': os.path.join(DATA_DIR, 'C', 'C_hhold_train.csv'),</p> 
+            <p>                   'test':  os.path.join(DATA_DIR, 'C', 'C_hhold_test.csv')}}</p>
+
+          <p style="color: #E74C3C">load training data<p>
+          <p>a_train = pd.read_csv(data_paths['A']['train'], index_col='id')</p>
+          <p>b_train = pd.read_csv(data_paths['B']['train'], index_col='id')</p>
+          <p>c_train = pd.read_csv(data_paths['C']['train'], index_col='id')</p>
+          <p>a_train.head()</p> 
+
+          <p>PLOTTING THE 'POOR' VS 'NON POOR' FOR COUNTRY A</p>
+          <p>a_train.poor.value_counts().plot.bar(title='Number of Poor for country A')</p>
+          <p>a_train.info()</p>
+
+
+
+          <p style="color: #E74C3C">PRE-PROCESS DATA</p> 
+          <p style="color: #E74C3C">Standardize features</p>
+          <p>def standardize(df, numeric_only=True):</p>
+              <p>numeric = df.select_dtypes(include=['int64', 'float64'])</p>
+    
+          <p style="color: #E74C3C">subtracy mean and divide by std</p>
+          <p>df[numeric.columns] = (numeric - numeric.mean()) / numeric.std()</p>
+          
+          <p>return df</p>
+    
+
+          <p>def pre_process_data(df, enforce_cols=None):</p>
+              <p>print("Input shape:\t{}".format(df.shape))</p>
+                  
+
+              <p>df = standardize(df)</p>
+              <p>print("After standardization {}".format(df.shape))</p>
+                  
+              <p style="color: #E74C3C">create dummy variables for categoricals</p>
+              <p>df = pd.get_dummies(df)</p>
+              <p>print("After converting categoricals:\t{}".format(df.shape))</p>
+              
+
+              <p style="color: #E74C3C">match test set and training set columns</p>
+              <p>if enforce_cols is not None:</p>
+                  <p>to_drop = np.setdiff1d(df.columns, enforce_cols)</p>
+                  <p>to_add = np.setdiff1d(enforce_cols, df.columns)</p>
+
+                  <p>df.drop(to_drop, axis=1, inplace=True)</p>
+                  <p>df = df.assign(**{c: 0 for c in to_add})</p>
+              
+              <p>df.fillna(0, inplace=True)</p>
+              
+              <p>return df</p>
+
+
+            <p style="color: #E74C3C"> GETTING TRAINING DATA READY</p> 
+            <p>print("Country A")</p>
+            <p>aX_train = pre_process_data(a_train.drop('poor', axis=1))</p>
+            <p>ay_train = np.ravel(a_train.poor)</p>
+
+            <p>print("\nCountry B")</p>
+            <p>bX_train = pre_process_data(b_train.drop('poor', axis=1))</p>
+            <p>by_train = np.ravel(b_train.poor)</p>
+
+            <p>print("\nCountry C")</p>
+            <p>cX_train = pre_process_data(c_train.drop('poor', axis=1))</p>
+            <p>cy_train = np.ravel(c_train.poor)</p>
+
+            <p style="color: #E74C3C"> GETTING TEST DATA READY </p>
+            <p>a_test = pd.read_csv(data_paths['A']['test'], index_col='id')</p>
+            <p>b_test = pd.read_csv(data_paths['B']['test'], index_col='id')</p>
+            <p>c_test = pd.read_csv(data_paths['C']['test'], index_col='id')</p>
+
+            <p>a_test = pre_process_data(a_test, enforce_cols=aX_train.columns)</p>
+            <p>b_test = pre_process_data(b_test, enforce_cols=bX_train.columns)</p>
+            <p>c_test = pre_process_data(c_test, enforce_cols=cX_train.columns)</p>
+
+
+
+            <br>
+            <h4 class="code-header">XGBoost Model</h4>
+            <hr>
+            
+            <br>
+            <p style="color: #E74C3C">  BUILDING XGBOOST MODEL </p>
+            <p><code style="color: A93226">from</code> xgboost import XGBClassifier</p>
+            <p><code style="color: A93226">from</code> sklearn.metrics import log_loss</p>
+
+            <br>
+            <p>model = XGBClassifier()</p>
+            <p>model.fit(aX_sp_train, ay_sp_train)</p>
+            <p>a_pred = model.predict(aX_test)</p>
+
+            <br>
+            <p>a_accuracy = accuracy_score(ay_test, a_pred)</p>
+            <p><code style="color: 148F77"><code style="color: 148F77">print</code></code>("Country A: ", a_accuracy)</p>
+            <p>a_roc = roc_auc_score(ay_test, a_pred)</p>
+            <p><code style="color: 148F77">print</code>("ROC of country A : ", a_roc)</p>
+            <p><code style="color: 148F77">print</code>(metrics.classification_report(ay_test, a_pred))</p>
+            <p><code style="color: 148F77">print</code>("Confusion Matrix")</p>
+            <p><code style="color: 148F77">print</code>(metrics.confusion_matrix(ay_test, a_pred))</p>
+            <p><code style="color: 148F77">print</code>("Log loss : ", metrics.log_loss(ay_test, a_pred))</p>
+            <p><code style="color: 148F77">print</code>("Cohen Kappa Score: ", cohen_kappa_score(ay_test, a_pred))</p>
+           
+
+            <img src="photo/code2.png" alt="flickr" class="imageNav-photo">
+            <br>
+            <p>model.fit(cX_sp_train, cy_sp_train)</p>
+            <p>c_pred = model.predict(cX_test)</p>
+            <p>c_accuracy = accuracy_score(cy_test, c_pred)</p>
+            <p><code style="color: 148F77">print</code>("Country C: ", c_accuracy)</p>
+            <p>c_roc = roc_auc_score(cy_test, c_pred)</p>
+            <p><code style="color: 148F77">print</code>("ROC of country C : ", c_roc)</p>
+            <p><code style="color: 148F77">print</code>(metrics.classification_report(cy_test, c_pred))</p>
+            <p><code style="color: 148F77">print</code>("Confusion Matrix")</p>
+            <p><code style="color: 148F77">print</code>(metrics.confusion_matrix(cy_test, c_pred))</p>
+            <p><code style="color: 148F77">print</code>("Log loss : ", metrics.log_loss(cy_test, c_pred))</p>
+            <p><code style="color: 148F77">print</code>("Cohen Kappa Score: ", cohen_kappa_score(cy_test, c_pred))</p>      
+                 
+
+          </article>
+        </div>
+
+    </div>
+      
+
+
+</div>
+  <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+          <p class="text-muted text-muted-footer text-center">
+            &copy; Copyright Abdullah Al Mamun
+          </p>
+        </div>
+      </div>
+      </div>  
+    </footer>
+
+    <!-- End of footer -->
+
+</body>
+
+</html>

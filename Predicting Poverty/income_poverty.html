@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTC-8">
+    <title>Predicting Poverty- Machine Learning Approach</title>
+    <!-- Linking Bootstrap stylesheet-->
+    <!-- Latest compiled and minified CSS -->
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ 		crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="	sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="	sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+
+<body>	
+  <nav class="navbar navbar-default">
+    <div class="container-fluid"> 
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 160%; color: white">Predicting Poverty</a>
+    </div>
+
+    <Collect the nav links, forms, and other content for toggling>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">        
+        <li><a href="problem_description.html" style="color: white">Problem Description</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">Models and Python Code<span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+              <li><a href="building_model.html">Competing Models</a></li>
+            <li><a href="model_evaluation.html">Model Evaluation</a></li>
+            <li><a href="code.html">Python Code</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li> 
+                   
+        <li><a href="prediction_performance.html" style="color: white">Prediction Performance</a></li>
+        <li><a href="income_poverty.html" style="color: white">Poverty and Income Growth</a></li>
+
+        </ul>
+
+      </div>
+      </div>
+  </nav>
+
+	<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8">
+          <article class="finalproject-content">
+            <h3 class="income_poverty-header" style="color: #E74C3C">Does growth matters to poverty reduction</h3>
+          </article>
+        </div>     
+
+        <script type="text/javascript" src="data.js"></script>    
+
+        <div id="plot1"></div>           
+
+        <script type = "text/javascript" src="plot1.js"></script>  
+
+        <div id="plot2"></div> 
+
+        <script type="text/javascript" src="data.js"></script>    
+
+        <script type = "text/javascript" src="plot2.js"></script>         
+
+    </div>
+      
+
+
+</div>
+  <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+          <p class="text-muted text-muted-footer text-center">
+            &copy; Copyright Abdullah Al Mamun
+          </p>
+        </div>
+      </div>
+      </div>  
+    </footer>
+
+    <!-- End of footer -->
+
+</body>
+
+</html>

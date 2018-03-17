@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTC-8">
+    <title>Predicting Poverty- Machine Learning Approach</title>
+    <!-- Linking Bootstrap stylesheet-->
+    <!-- Latest compiled and minified CSS -->
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ 		crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="	sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="	sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>	
+  <nav class="navbar navbar-default">
+    <div class="container-fluid"> 
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 160%; color: white">Predicting Poverty</a>
+    </div>
+
+    <Collect the nav links, forms, and other content for toggling>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">        
+        <li><a href="problem_description.html" style="color: white">Problem Description</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">Models and Python Code<span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+          <li><a href="building_model.html">Competing Models</a></li>
+            <li><a href="model_evaluation.html">Model Evaluation</a></li>
+            <li><a href="code.html">Python Code</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li> 
+                   
+        <li><a href="prediction_performance.html" style="color: white">Prediction Performance</a></li>
+        <li><a href="income_poverty.html" style="color: white">Poverty and Income Growth</a></li>
+
+        </ul>
+
+      </div>
+      </div>
+  </nav>
+
+	<div class="container">
+
+    <div class="row">
+      
+   <div class="col-md-8">
+          <article class="finalproject-content">
+     
+            <h4 class="problemDescription-header" style="color: #E74C3C">Problem description</h4>
+            <hr/>
+            <p>The models only predict whether or not a given household for a given country is poor or not. The training features are survey data from three countries. For each country, A, B, and C, survey data is provided at the household as well as individual level. Each household is identified by its id, and each individual is identified by both their household id and individual iid. Most households have multiple individuals that make up that household. </p>   
+
+            <br>
+
+            <h4 class="problemDescription-header" style="color: #E74C3C">Data Format</h4>
+            <hr>
+            <p>
+            Predictions is made at the household level only, but data for each of the three countries is provided at the household and individual level. We can also construct additional features for the household using the individual data that are particular useful for predicting at the household level, which is why we provide both. There are six training files in total. </p>
+
+            <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th> Country</th>
+                <th>Filename</th>
+                <th>Survey Level</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr>
+                <td>A</td>
+                <td>A_hhold_train.csv</td>
+                <td>household</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>B_hhold_train.csv</td>
+                <td>household</td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td>C_hhold_train.csv</td>
+                <td>household</td>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>A_indiv_train.csv</td>
+                <td>individual</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>B_indiv_train.csv</td>
+                <td>individual</td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td>C_indiv_train.csv</td>
+                <td>individual</td>
+              </tr>
+            </tbody>
+          </table>     
+
+
+            <p>The dataset has been structured so that the <code>id</code>columns match across the individual and house hold datasets. For both datasets, an assessment of whether or not the household is above or below the poverty line is in the <code>poor</code> column. This binary variable is the target variable for the competition.</p>      
+             
+
+           <p> Each column in the dataset corresponds with a survey question. Each question is either multiple choice, in which case each choice has been encoded as random string, or it is a numeric value. Many of the multiple choice questions are about consumable goods--for example does household have items such as <code>Bar soap</code>, <code>Cooking oil</code>, <code>Matches</code>, and <code>Salt</code>. Numeric questions often ask things like <code>How many working cell phones in total does household own?</code> or <code>How many separate rooms do the members of household occupy?</code>   
+           </p>    
+
+           <p>
+             For example, a few rows from <code>A_hhold_train.csv</code> look like
+           </p>      
+
+           <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th>id</th>
+                <th>wBXbHZmp</th>
+                <th>SlDKnCuu</th>
+                <th>AlDbXTlZ</th>
+                <th>...</th>
+                <th>poor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>80389</th>
+                <td>JhtDR</td>
+                <td>GUusz</td>
+                <td>aQeIm</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <th>9370</th>
+                <td>JhtDR</td>
+                <td>GUusz</td>
+                <td>cecIq</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <th>39883</th>
+                <td>JhtDR</td>
+                <td>GUusz</td>
+                <td>aQeIm</td>
+                <td>...</td>
+                <td>False</td>
+              </tr>
+            </tbody>
+          </table>  
+
+           <p>
+             And the corresponding data in <code>A_indiv_train.csv</code> is
+           </p> 
+
+           <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th>id</th>
+                <th>iid</th>
+                <th>HeUgMnzF</th>
+                <th>CaukPfUC</th>
+                <th>xqUooaNJ</th>
+                <th>...</th>
+                <th>poor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th rowspan="4" valign="top">80389</th>
+                <th>1</th>
+                <td>XJsPz</td>
+                <td>mOlYV</td>
+                <td>dSJoN</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>XJsPz</td>
+                <td>mOlYV</td>
+                <td>JTCKs</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>TRFeI</td>
+                <td>mOlYV</td>
+                <td>JTCKs</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>XJsPz</td>
+                <td>yAyAe</td>
+                <td>JTCKs</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+              <tr>
+                <th>9370</th>
+                <th>1</th>
+                <td>XJsPz</td>
+                <td>mOlYV</td>
+                <td>JTCKs</td>
+                <td>...</td>
+                <td>True</td>
+              </tr>
+            </tbody>
+          </table>
+
+          </article>
+        </div>
+
+    </div>
+      
+
+
+</div>
+  <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+          <p class="text-muted text-muted-footer text-center">
+            &copy; Copyright Abdullah Al Mamun
+          </p>
+        </div>
+      </div>
+      </div>  
+    </footer>
+
+    <!-- End of footer -->
+
+</body>
+
+</html>

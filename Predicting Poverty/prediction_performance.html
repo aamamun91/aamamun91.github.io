@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTC-8">
+    <title>Predicting Poverty- Machine Learning Approach</title>
+    <!-- Linking Bootstrap stylesheet-->
+    <!-- Latest compiled and minified CSS -->
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ 		crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="	sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="	sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>	
+  <nav class="navbar navbar-default">
+    <div class="container-fluid"> 
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" style="font-size: 160%; color: white">Predicting Poverty</a>
+    </div>
+
+    <Collect the nav links, forms, and other content for toggling>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">        
+        <li><a href="problem_description.html" style="color: white">Problem Description</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">Models and Python Code<span class="caret"></span></a>
+
+          <ul class="dropdown-menu">
+            <li><a href="building_model.html">Competing Models</a></li>
+            <li><a href="model_evaluation.html">Model Evaluation</a></li>
+            <li><a href="code.html">Python Code</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li> 
+                   
+        <li><a href="prediction_performance.html" style="color: white">Prediction Performance</a></li>
+        <li><a href="income_poverty.html" style="color: white">Poverty and Income Growth</a></li>
+
+        </ul>
+
+      </div>
+      </div>
+  </nav>
+
+	<div class="container">
+
+    <div class="row">
+      
+   <div class="col-md-8">
+          <article class="finalproject-content">
+     
+            <h3 class="problemDescription-header" style="color: #E74C3C">Motivation Towards This Project</h3>
+            <hr/>
+
+            <p>My participation in the competition can be seen as an accident. I was browsing the DrivenData page and saw a competition was going on, which was sponsored by World Bank, my former organization. The topic was interesting - poverty prediction. I had a published paper on this topic. In my Masters in Statistics I worked on a thesis paper 'Identifying the Poor Using Binary Classifiers'. In that ppaer I used Guttman Score to classify where a household is poor or not. My motivation came from this. </p>
+
+            <p>In this machine learning competition I started with processing the data and standardization. As mentioned in the problem description page, I was given two types of data set - training and test - for each of three countries. </p>
+
+
+            <a><img src="photo/myScore.png" alt="flickr" class="imageNav-photo"></a> 
+
+            <p>Training dataset has the label - poor and non-poor status of household. However, the test data set didn't has no such label. The model built on training dataset is to predict the poverty status of household in the test data. The Driven Data site gave score of each submission and the score was the mean log-loss. I had a total of 9 submission and my highest score in terms of mean log-loss was .4544 and I was ranked 429 out of more than 1000 participants. The models that I worked on for the competition included - random forest, logistic regression, SVM, grid search and adaboost classifier. Here is the screen shot of my score in the competition. </p>
+
+            <br>
+
+            <p>While the competition is over I thought why not I continue with the project and make it as final project in the bootcamp with further works. In this final project, I only worked on training data set and tried to replicate the benchmark results.</p>
+    
+            <h3 class="problemDescription-header" style="color: #E74C3C">Benchmark Results</h3>
+            <hr>
+
+            <p> The World Bank had presented the findings of their own machine learning works on the final day of the competition. I had the opportunity to be present their and listen to their observation. </p>
+
+            <p>
+           The below table summarizes the outcome of selected models of each class for Malawi (MWI) when considered for preprocessing options (such as over- and under-sampling) and hyperparameter optimization using cross-validation. This table reports the best performing version of a model for each class of model that was explored. The models that perform best (for any quality measure) are not the same that performed best for MWI. Clearly, logistic regression is seen the top performing model here. </p>
+
+            <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th> Algorithm</th>
+                <th>Accuracy</th>
+                <th>Recall</th>
+                <th>Precision</th>
+                <th>f1</th>
+                <th>ROC AUC</th>
+                <th>Cohen Kappa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Logisitic Regression</td>
+                <td>0.910</td>
+                <td>0.456</td>
+                <td>0.662</td>
+                <td>0.540</td>
+                <td>0.923</td>
+                <td>0.483</td>
+              </tr>
+              <tr>
+                <td>SVM</td>
+                <td>0.902</td>
+                <td>0.208</td>
+                <td>0.782</td>
+                <td>0.329</td>
+                <td>0.932</td>
+                <td>0.312</td>
+              </tr>
+              <tr>
+                <td>KNN</td>
+                <td>0.904</td>
+                <td>0.372</td>
+                <td>0.647</td>
+                <td>0.472</td>
+                <td>0.865</td>
+                <td>0.423</td>
+              </tr>
+              <tr>
+                <td>XGBoost</td>
+                <td>0.898</td>
+                <td>0.184</td>
+                <td>0.743</td>
+                <td>0.295</td>
+                <td>0.917</td>
+                <td>0.285</td>
+              </tr>
+              <tr>
+                <td>Decision Trees</td>
+                <td>0.859</td>
+                <td>0.392</td>
+                <td>0.390</td>
+                <td>0.391</td>
+                <td>0.656</td>
+                <td>0.306</td>
+              </tr>
+              <tr>
+               <td>Naïve Bayes</td>
+                <td>0.807</td>
+                <td>0.603</td>
+                <td>0.322</td>
+                <td>0.420</td>
+                <td>0.828</td>
+                <td>0.238</td>
+              </tr>
+              <tr>
+               <td>Random Forest</td>
+                <td>0.892</td>
+                <td>0.107</td>
+                <td>0.729</td>
+                <td>0.187</td>
+                <td>0.832</td>
+                <td>0.210</td>
+              </tr>
+            </tbody>
+          </table>     
+
+
+            <p>THe below three tables summarize the results of 9 models that I have built so far for each country - A, B and C</p>                
+             
+
+           <p>The results for country A reveals that SVM is the most appropriate model. In all dimension SVM with cross validation of 5 gives better results. However, log loss couldn't be minimized. Log loss near 0 is expected. Here, random forest, decision tree and KNN perform poorly in predicting the class or label of household. </p>    
+
+           <p style="color: #E74C3C"> Country A </p>      
+
+           <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th> Algorithm</th>
+                <th>Accuracy</th>
+                <th>Recall</th>
+                <th>Precision</th>
+                <th>f1</th>
+                <th>ROC AUC</th>
+                <th>Cohen Kappa</th>
+                <th>Log Loss</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SVM Full CV</td>
+                <td>0.876</td> 
+                <td>0.88</td>  
+                <td>0.88</td>  
+                <td>0.88</td>  
+                <td>0.875</td> 
+                <td>0.748</td> 
+                <td>4.294</td>
+              </tr>
+              <tr>
+                <td>Logisitic Regression</td>
+                <td>0.875</td>
+                <td>0.88</td>
+                <td>0.88</td>  
+                <td>0.88</td>  
+                <td>0.874</td> 
+                <td>0.747</td> 
+                <td>4.311</td>
+              </tr>
+              <tr>
+                <td>Grid Search Model</td>
+                <td>0.874</td> 
+                <td>0.88</td>  
+                <td>0.87</td>  
+                <td>0.87</td>  
+                <td>0.875</td> 
+                <td>0.745</td> 
+                <td>4.362</td>                
+              </tr>
+              <tr>
+                <td>SVM with Isotonic</td>
+                <td>0.873</td> 
+                <td>0.87</td>  
+                <td>0.87</td>  
+                <td>0.87</td>  
+                <td>0.873</td> 
+                <td>0.744</td> 
+                <td>4.378</td>
+              </tr>             
+              <tr>
+               <td>Adaboost Classifier</td>
+               <td>0.867</td>  
+               <td>0.87</td>  
+               <td>0.87</td>  
+               <td>0.87</td>  
+               <td>0.865</td> 
+               <td>0.730</td> 
+               <td>4.597</td>
+              </tr>
+               <tr>
+                <td>XGBoost</td>
+                <td>0.858</td> 
+                <td>0.86</td>  
+                <td>0.86</td>  
+                <td>0.86</td>  
+                <td>0.856</td> 
+                <td>0.711</td> 
+                <td>4.917</td>
+              </tr>              
+              <tr>
+               <td>Random Forest</td>
+                <td>0.807</td> 
+                <td>0.81</td>  
+                <td>0.81</td>  
+                <td>0.81</td>  
+                <td>0.804</td> 
+                <td>0.609</td> 
+                <td>6.652</td>
+              </tr>
+              <tr>
+               <td>Decision Trees</td>
+                <td>0.747</td> 
+                <td>0.75</td>  
+                <td>0.75</td>  
+                <td>0.75</td> 
+                <td> 0.746</td> 
+                <td>0.490</td> 
+                <td>8.723</td>
+              </tr>
+              <td>KNN</td>
+                <td>0.724</td> 
+                <td>0.8</td> 
+                <td>0.72</td>  
+                <td>0.72</td>  
+                <td>0.749</td> 
+                <td>0.470</td> 
+                <td>9.548</td>
+              </tr>
+            </tbody>
+          </table>     
+
+          <br>
+          <a><img src="photo/knn1.png" alt="flickr" class="imageNav-photo"></a> 
+          <br>
+          <br>
+
+          <p> For country B SV with isotonic came out as top performing model followed by XGBoost and Random Forest</p>
+
+           <p style="color: #E74C3C">Country B </p> 
+
+           <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th> Algorithm</th>
+                <th>Accuracy</th>
+                <th>Recall</th>
+                <th>Precision</th>
+                <th>f1</th>
+                <th>ROC AUC</th>
+                <th>Cohen Kappa</th>
+                <th>Log Loss</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SVM with Isotonic</td>
+                <td>0.946</td> 
+                <td>0.92</td>  
+                <td>0.95</td>  
+                <td>0.92</td>  
+                <td>0.511</td> 
+                <td>0.039</td> 
+                <td>1.867</td>
+              </tr>
+              <tr>
+                <td>XGBoost</td>
+                <td>0.945</td> 
+                <td>0.92</td>  
+                <td>0.94</td>  
+                <td>0.93</td>  
+                <td>0.553</td> 
+                <td>0.164</td> 
+                <td>1.909</td>
+              </tr>
+              <tr>
+                <td>Random Forest</td>
+                <td>0.945</td> 
+                <td>0.91</td>  
+                <td>0.94</td>  
+                <td>0.92</td>  
+                <td>0.510</td> 
+                <td>0.036</td> 
+                <td>1.909</td>
+              </tr>
+              <tr>
+                <td>KNN</td>
+                <td>0.941</td> 
+                <td>0.92</td>  
+                <td>0.94</td>  
+                <td>0.92</td>  
+                <td>0.583</td> 
+                <td>0.123</td> 
+                <td>2.037</td>
+              </tr>             
+              <tr>
+               <td>Logistic Regression</td>
+                <td>0.921</td> 
+                <td>0.92</td>  
+                <td>0.92</td>  
+                <td>0.92</td>  
+                <td>0.583</td> 
+                <td>0.178</td> 
+                <td>2.716</td>
+              </tr>
+               <tr>
+                <td>Decision Trees</td>
+                <td>0.921</td> 
+                <td>0.91</td>  
+                <td>0.88</td>  
+                <td>0.89</td>  
+                <td>0.563</td> 
+                <td>0.098</td> 
+                <td>4.073</td>
+              </tr>              
+              <tr>
+               <td>Adaboost Classifier</td>
+                <td>0.903</td> 
+                <td>0.93</td>  
+                <td>0.93</td>  
+                <td>0.93</td>  
+                <td>0.630</td> 
+                <td>0.268</td> 
+                <td>2.503</td>
+              </tr>
+              <tr>
+               <td>Grid Search Model</td>
+                <td>0.903</td> 
+                <td>0.92</td>  
+                <td>0.9</td> 
+                <td>0.91</td>  
+                <td>0.595</td> 
+                <td>0.167</td> 
+                <td>3.352</td>
+              </tr>
+              <td>SVM Full CV</td>
+                <td>0.900</td> 
+                <td>0.91</td>  
+                <td>0.9</td> 
+                <td>0.91</td>  
+                <td>0.583</td> 
+                <td>0.146</td> 
+                <td>3.437</td>
+              </tr>
+            </tbody>
+          </table>  
+
+          <br>
+
+        <a><img src="photo/knn2.png" alt="flickr" class="imageNav-photo"></a> 
+        <br>
+        <br>
+
+        <p> Country C seems to be an ideal data set for use of machine learning to predict poverty status of the housheolds. Most of the models far well in all dimension of metrics - accuracy, precision, recall. Even the log loss is found to be very low compare to the results in other two countries.</p>
+
+        <p style="color: #E74C3C">Country C</p> 
+
+           <table class="table">
+            <thead>
+              <tr style="text-align: right;">
+                <th> Algorithm</th>
+                <th>Accuracy</th>
+                <th>Recall</th>
+                <th>Precision</th>
+                <th>f1</th>
+                <th>ROC AUC</th>
+                <th>Cohen Kappa</th>
+                <th>Log Loss</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>XGBoost</td>
+                <td>0.996</td> 
+                <td>1.00</td>  
+                <td>1.00</td>  
+                <td>1.00</td>  
+                <td>0.991</td> 
+                <td>0.985</td> 
+                <td>0.128</td>
+              </tr>
+              <tr>
+                <td>Adaboost Classifier</td>
+                <td>0.996</td> 
+                <td>1.00</td>  
+                <td>1.00</td>  
+                <td>1.00</td>  
+                <td>0.989</td> 
+                <td>0.983</td> 
+                <td>0.149</td>
+              </tr>
+              <tr>
+                <td>Decision Trees</td>
+                <td>0.993</td> 
+                <td>0.99</td>  
+                <td>0.99</td>  
+                <td>0.99</td>  
+                <td>0.991</td> 
+                <td>0.973</td> 
+                <td>0.235</td>
+              </tr>
+              <tr>
+                <td>Random Forest</td>
+                <td>0.979</td> 
+                <td>0.98</td>  
+                <td>0.98</td>  
+                <td>0.98</td>  
+                <td>0.928</td> 
+                <td>0.910</td> 
+                <td>0.726</td>
+              </tr>             
+              <tr>
+               <td>SVM Full CV</td>
+                <td>0.914</td> 
+                <td>0.92</td>  
+                <td>0.91</td>  
+                <td>0.91</td>  
+                <td>0.837</td> 
+                <td>0.662</td> 
+                <td>2.967</td>
+              </tr>
+               <tr>
+                <td>SVM with Isotonic</td>
+                <td>0.912</td> 
+                <td>0.91</td>  
+                <td>0.91</td>  
+                <td>0.91</td>  
+                <td>0.794</td> 
+                <td>0.625</td> 
+                <td>3.031</td>
+              </tr>              
+              <tr>
+               <td>Logistic Regression</td>
+               <td>0.907</td>  
+               <td>0.91</td>  
+               <td>0.91</td>  
+               <td>0.91</td>  
+               <td>0.808</td> 
+               <td>0.622</td> 
+               <td>3.223</td>
+              </tr>
+              <tr>
+               <td>Grid Search Model</td>
+                <td>0.895</td> 
+                <td>0.92</td>  
+                <td>0.89</td>  
+                <td>0.90</td>  
+                <td>0.882</td> 
+                <td>0.645</td> 
+                <td>3.629</td>
+              </tr>
+              <td>KNN</td>
+                <td>0.876</td> 
+                <td>0.86</td>  
+                <td>0.88</td>  
+                <td>0.85</td>  
+                <td>0.624</td> 
+                <td>0.333</td> 
+                <td>4.269</td>
+              </tr>
+            </tbody>
+          </table>  
+
+          <br> 
+
+          <a><img src="photo/knn3.png" alt="flickr" class="imageNav-photo"></a>   
+
+          <br>
+
+          </article>
+        </div>
+
+    </div> 
+  
+    
+
+</div>
+  <!-- Start of footer -->
+    <footer class="footer navbar-fixed-bottom">
+      <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+          <p class="text-muted text-muted-footer text-center">
+            &copy; Copyright Abdullah Al Mamun
+          </p>
+        </div>
+      </div>
+      </div>  
+    </footer>
+
+    <!-- End of footer -->
+
+</body>
+
+</html>
